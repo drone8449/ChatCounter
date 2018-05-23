@@ -1,5 +1,5 @@
 package edu.handong.csee.java.chatcounter;
 
-public class CsvParser {
+public class CsvParser extends MessageParser {
 
 }
