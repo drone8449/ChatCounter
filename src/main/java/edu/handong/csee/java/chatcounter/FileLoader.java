@@ -1,45 +1,48 @@
 package edu.handong.csee.java.chatcounter;
 
-import com.opencsv.*;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class FileLoader {
-	private ArrayList<String> messages;
 	
-	public void readDirectory(String path) {
-		ArrayList<File> fileNames = getFileNames(path);
+	public ArrayList<String> getFile(String strDir) {
+		File myDir = getDirectory(strDir);
 		
-		for(File fileName:fileNames) {
+		File[] file = getListOfFiles(myDir);
+		
+		ArrayList<String> message = readFiles(file);
+		
+		return message;
+	}
+	
+	private File getDirectory(String strDir) {
+		File myDirectory = new File(strDir);
+		
+		return myDirectory;
+	}
+	
+	private File[] getListOfFiles(File dataDir) {
+		for(File file : dataDir.listFiles()) {
+			System.out.println(file.getAbsolutePath());
+		}
+		
+		return dataDir.listFiles();
+	}
+	
+	private ArrayList<String> readFiles(File[] files) {
+		ArrayList<String> message = new ArrayList<String>();
+		
+		for(File file : files) {
+			String name = file.toString();
 			
-		}
-	}
-	
-	private ArrayList<File> getFileNames(String path) {
-		ArrayList<File> fileNames = new ArrayList<File>();
+			if(name.contains(".txt")) {
+				
+			}
+			else if(name.contains(".csv")) {
+				
+			}
+		}		
 		
-		File myPath = new File(path);
-		myPath.listFiles();
-		
-		for(File fileName:myPath.listFiles()) {
-			fileNames.add(fileName);
-		}
-		
-		return fileNames;
-	}
-	
-	public void getMessages() {
-		Scanner readfile = new Scanner(System.in);
-		int lineCount = 0;
-		
-		while(readfile.hasNext()) {
-			readfile.nextLine();
-			lineCount++;
-		}
-		
-		for(int i = 0; i < lineCount; i++) {
-			String str = readfile.nextLine();
-		}
+		return message;
 	}
 }
