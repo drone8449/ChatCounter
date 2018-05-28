@@ -32,6 +32,9 @@ public class FileLoader {
 	private ArrayList<String> readFiles(File[] files) {
 		ArrayList<String> message = new ArrayList<String>();
 		
+		CsvParser csvReader = new CsvParser();
+		TxtParser txtReader = new TxtParser();
+		
 		for(File file : files) {
 			String name = file.toString();
 			
