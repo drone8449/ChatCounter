@@ -5,16 +5,6 @@ import java.util.ArrayList;
 
 public class FileLoader {
 	
-	public ArrayList<String> getFile(String strDir) {
-		File myDir = getDirectory(strDir);
-		
-		File[] file = getListOfFiles(myDir);
-		
-		ArrayList<String> message = readFiles(file);
-		
-		return message;
-	}
-	
 	private File getDirectory(String strDir) {
 		File myDirectory = new File(strDir);
 		
@@ -27,6 +17,16 @@ public class FileLoader {
 	    }
 		
 		return dataDir.listFiles();
+	}
+	
+	public ArrayList<String> getFile(String strDir) {
+		File myDir = getDirectory(strDir);
+		
+		File[] file = getListOfFiles(myDir);
+		
+		ArrayList<String> message = readFiles(file);
+		
+		return message;
 	}
 	
 	private ArrayList<String> readFiles(File[] files) {
@@ -47,6 +47,7 @@ public class FileLoader {
 		} catch(IOException e2) {
 			System.out.println(e2.getMessage());
 		}
+		
 		return message;
 	}
 }

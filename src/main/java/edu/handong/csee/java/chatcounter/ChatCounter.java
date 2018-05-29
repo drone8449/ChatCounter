@@ -16,7 +16,7 @@ public class ChatCounter {
 	    FileWriter outer = new FileWriter();
 		
 	    cc.runCLI(args);
-		message = reader.getFile(args[0]);
+		message = reader.getFile(cc.getPath());
 		list = parser.runParser(message);
 		countOfMessage = filter.countMessage(list);
 		outer.getOutput(countOfMessage, cc.getFile());

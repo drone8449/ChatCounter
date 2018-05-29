@@ -38,8 +38,6 @@ public class MessageParser {
 			Matcher m2 = p2.matcher(s);
 			Matcher m3 = p3.matcher(s);
 			
-			char c = s.charAt(0);
-			
 			if (!m1.find() && !m2.find() && !m3.find()) {
 				String preLine = message.get(key-1);
 				preLine = preLine.concat(s);
