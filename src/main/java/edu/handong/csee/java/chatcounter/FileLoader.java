@@ -22,9 +22,9 @@ public class FileLoader {
 	}
 	
 	private File[] getListOfFiles(File dataDir) {
-		for(File file : dataDir.listFiles()) {
-			System.out.println(file.getAbsolutePath());
-		}
+	    for(File file : dataDir.listFiles()) {
+	    	    System.out.println(file.getAbsolutePath());
+	    }
 		
 		return dataDir.listFiles();
 	}
@@ -32,20 +32,21 @@ public class FileLoader {
 	private ArrayList<String> readFiles(File[] files) {
 		ArrayList<String> message = new ArrayList<String>();
 		
-		CsvParser csvReader = new CsvParser();
-		TxtParser txtReader = new TxtParser();
-		
-		for(File file : files) {
-			String name = file.toString();
-			
-			if(name.contains(".txt")) {
+		try {
+			for(File input : files) {
+				BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(input), "UTF-8"));
 				
+				while(reader.readLine()!=null) {
+					String line = reader.readLine();
+					message.add(line);
+				}
 			}
-			else if(name.contains(".csv")) {
-				
-			}
-		}		
-		
+		}
+		catch(FileNotFoundException e1) {
+			System.out.println(e1.getMessage());
+		} catch(IOException e2) {
+			System.out.println(e2.getMessage());
+		}
 		return message;
 	}
 }
