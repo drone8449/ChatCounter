@@ -7,6 +7,44 @@ import java.util.regex.Pattern;
 public class MessageParser {
 	ArrayList<MessageLists> list = new ArrayList<MessageLists>();
 	
+public void parsing(ArrayList<String> message) {
+		
+		TxtParser parsetxt = new TxtParser();
+		CsvParser parsecsv = new CsvParser();
+		
+		int year = 0;
+		int month = 0;
+		int day = 0;
+		
+		for(String s : message) {
+			int count=0;
+			char c = s.charAt(0);
+			if(c=='-') {
+
+				String firstLine = s;
+				String pattern = "-+\\s([0-9]+).\\s([0-9]).\\s([0-9]+).";
+				Pattern p = Pattern.compile(pattern);
+				Matcher m = p.matcher(firstLine);
+
+				if(m.find()) {
+					year = Integer.parseInt(m.group(1));
+					month = Integer.parseInt(m.group(2));
+					day = Integer.parseInt(m.group(3));
+				}
+			}
+			if(c=='[') {
+				parsetxt.run(count,s,year,month,day);
+				count++;
+			}
+			
+			if(c=='2') {
+				parsecsv.run(count,s);
+				count++;
+			}
+	
+		}
+	}
+	
 	public ArrayList<MessageLists> runParser(ArrayList<String> message) {
 		message = remakeMessage(message);
 		parsing(message);		
@@ -50,43 +88,5 @@ public class MessageParser {
 		}
 		
 		return message;
-	}
-	
-	public void parsing(ArrayList<String> message) {
-		
-		TxtParser parsetxt = new TxtParser();
-		CsvParser parsecsv = new CsvParser();
-		
-		int year = 0;
-		int month = 0;
-		int day = 0;
-		
-		for(String s : message) {
-			int count=0;
-			char c = s.charAt(0);
-			if(c=='-') {
-
-				String firstLine = s;
-				String pattern = "-+\\s([0-9]+).\\s([0-9]).\\s([0-9]+).";
-				Pattern p = Pattern.compile(pattern);
-				Matcher m = p.matcher(firstLine);
-
-				if(m.find()) {
-					year = Integer.parseInt(m.group(1));
-					month = Integer.parseInt(m.group(2));
-					day = Integer.parseInt(m.group(3));
-				}
-			}
-			if(c=='[') {
-				parsetxt.run(count,s,year,month,day);
-				count++;
-			}
-			
-			if(c=='2') {
-				parsecsv.run(count,s);
-				count++;
-			}
-	
-		}
 	}
 }
