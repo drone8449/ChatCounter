@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TxtParser extends MessageParser {
+	
 	public void run(int count, String s, int year, int month, int day) {
 		String name="";
 		String ampm="";

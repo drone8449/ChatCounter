@@ -18,31 +18,32 @@ public class ChatCounter {
 		}
 	
 	private void runCLI(String[] args) {
-		Options options = makeOptions();
+		Options options = createOptions();
 
 		if(parseOptions(options, args)) {
 			if(help) {
 				printHelp(options);
 			}
+			
+			ArrayList<String> message = new ArrayList<String>();
+			ArrayList<MessageLists> list = new ArrayList<MessageLists>();
+			HashMap<String,Integer> countOfMessage = new HashMap<String,Integer>();
+			
+			FileLoader reader = new FileLoader();
+			MessageParser parser = new MessageParser();
+			FileFilter filter = new FileFilter();
+		    FileWriter outer = new FileWriter();
+			
+			message = reader.getFile(path);
+			list = parser.runParser(message);
+			countOfMessage = filter.countMessage(list);
+			outer.getOutput(countOfMessage, file);
+			
 		}
-		
-		ArrayList<String> message = new ArrayList<String>();
-		ArrayList<MessageLists> list = new ArrayList<MessageLists>();
-		HashMap<String,Integer> countOfMessage = new HashMap<String,Integer>();
-		
-		FileLoader reader = new FileLoader();
-		MessageParser parser = new MessageParser();
-		FileFilter filter = new FileFilter();
-	    FileWriter outer = new FileWriter();
-		
-		message = reader.getFile(path);
-		list = parser.runParser(message);
-		countOfMessage = filter.countMessage(list);
-		outer.getOutput(countOfMessage, file);
 		
 	}
 	
-	private Options makeOptions() {
+	private Options createOptions() {
 		Options options = new Options();
 
 		options.addOption(Option.builder("i")
