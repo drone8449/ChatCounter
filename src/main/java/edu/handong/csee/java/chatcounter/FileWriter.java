@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 
 public class FileWriter {
 	
-	public void getOutput(HashMap<String,Integer> countOfMessage) {
+	public void getOutput(HashMap<String,Integer> countOfMessage, String filename) {
 
 		String fileName = "result.txt";
 		PrintWriter output = null;

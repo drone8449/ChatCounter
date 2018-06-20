@@ -35,10 +35,10 @@ public class ChatCounter {
 		FileFilter filter = new FileFilter();
 	    FileWriter outer = new FileWriter();
 		
-		message = reader.getFile(args[0]);
+		message = reader.getFile(path);
 		list = parser.runParser(message);
 		countOfMessage = filter.countMessage(list);
-		outer.getOutput(countOfMessage);
+		outer.getOutput(countOfMessage, file);
 		
 	}
 	
