@@ -12,6 +12,20 @@ public class ChatCounter {
 	
 	public static void main(String[] args) {
 		
+		ChatCounter runner = new ChatCounter();
+		runner.runCLI(args);
+		
+		}
+	
+	private void runCLI(String[] args) {
+		Options options = makeOptions();
+
+		if(parseOptions(options, args)) {
+			if(help) {
+				printHelp(options);
+			}
+		}
+		
 		ArrayList<String> message = new ArrayList<String>();
 		ArrayList<MessageLists> list = new ArrayList<MessageLists>();
 		HashMap<String,Integer> countOfMessage = new HashMap<String,Integer>();
@@ -25,16 +39,7 @@ public class ChatCounter {
 		list = parser.runParser(message);
 		countOfMessage = filter.countMessage(list);
 		outer.getOutput(countOfMessage);
-		}
-	
-	private void runCLI(String[] args) {
-		Options options = makeOptions();
-
-		if(parseOptions(options, args)) {
-			if(help) {
-				printHelp(options);
-			}
-		}
+		
 	}
 	
 	private Options makeOptions() {
@@ -70,6 +75,7 @@ public class ChatCounter {
 			path = cmd.getOptionValue("i");
 			file = cmd.getOptionValue("o");
 			help = cmd.hasOption("h");
+			
 		}catch(Exception e) {
 			printHelp(options);
 			System.out.println();
