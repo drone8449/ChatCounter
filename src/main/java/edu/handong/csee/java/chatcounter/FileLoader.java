@@ -3,8 +3,20 @@ package edu.handong.csee.java.chatcounter;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * FileLoader class
+ * Get directory path of Files and read and save
+ * @author taehyun
+ *
+ */
 public class FileLoader {
 	
+	/**
+	 * getFile method
+	 * Read files and save content of files by directory path inputed
+	 * @param strDir(String)
+	 * @return message(ArrayList)
+	 */
 	public ArrayList<String> getFile(String strDir) {
 		File myDir = getDirectory(strDir);
 		

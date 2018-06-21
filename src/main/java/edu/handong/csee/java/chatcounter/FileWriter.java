@@ -4,8 +4,20 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+/**
+ * FileWriter class
+ * Make file
+ * @author taehyun
+ *
+ */
 public class FileWriter {
 	
+	/**
+	 * getOutput method
+	 * Write lines to file
+	 * @param countOfMessage(HashMap<String, Integer>)
+	 * @param filename(String)
+	 */
 	public void getOutput(HashMap<String,Integer> countOfMessage, String filename) {
 
 		PrintWriter output = null;

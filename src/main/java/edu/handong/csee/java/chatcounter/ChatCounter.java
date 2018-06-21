@@ -4,12 +4,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import org.apache.commons.cli.*;
 
+/**
+ * Main Class
+ * @author taehyun
+ *
+ */
 public class ChatCounter {
 	
 	String path;
 	String file;
 	boolean help;
 	
+	/**
+	 * main method
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		ChatCounter runner = new ChatCounter();

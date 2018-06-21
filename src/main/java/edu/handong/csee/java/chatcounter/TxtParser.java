@@ -3,8 +3,23 @@ package edu.handong.csee.java.chatcounter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * txtParser class
+ * It parse the line to match each of lines to MessageLists
+ * Parsed lines are save in list(ArrayList)
+ * @author taehyun
+ *
+ */
 public class TxtParser extends MessageParser {
 	
+	/**
+	 * method to run txtParser
+	 * @param count
+	 * @param s
+	 * @param year
+	 * @param month
+	 * @param day
+	 */
 	public void run(int count, String s, int year, int month, int day) {
 		String name="";
 		String ampm="";
@@ -28,6 +43,8 @@ public class TxtParser extends MessageParser {
 
 		time= hour*60 + minute;
 		if(ampm=="오후") time+=12*60;
+		
+		//System.out.println(name + message + year + month + day + time);
 
 		list.add(count, new MessageLists(name, message, year, month, day, time));
 	}

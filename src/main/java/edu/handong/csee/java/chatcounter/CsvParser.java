@@ -3,8 +3,20 @@ package edu.handong.csee.java.chatcounter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * csvParser class
+ * It parse the line to match each of lines to MessageLists
+ * Parsed lines are save in list(ArrayList)
+ * @author taehyun
+ *
+ */
 public class CsvParser extends MessageParser {
 	
+	/**
+	 * method to run csvParser
+	 * @param count
+	 * @param s
+	 */
 	public void run(int count,String s) {
 		String name="";
 		String message="";
@@ -30,7 +42,9 @@ public class CsvParser extends MessageParser {
 			message = m.group(7);
 		}
 		time=hour*60+minute;
-
+		
+		// System.out.println(name + message + year + month + day + time);
+		
 		list.add(count,new MessageLists(name,message,year,month, day, time));
 	}
 }
