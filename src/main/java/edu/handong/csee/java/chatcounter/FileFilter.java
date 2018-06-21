@@ -24,7 +24,7 @@ public class FileFilter {
 				}
 			}
 			
-			System.out.println(person.name + count);
+		//	System.out.println(person.name + count);
 			countOfMessage.put(person.name, count);
 		}
 		

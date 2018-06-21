@@ -77,8 +77,6 @@ public void parsing(ArrayList<String> message) {
 			Matcher m3 = p3.matcher(s);
 			
 			if (!m1.find() && !m2.find() && !m3.find()) {
-				String preLine = message.get(key-1);
-				preLine = preLine.concat(s);
 				message.remove(key);
 				key--;
 				continue;

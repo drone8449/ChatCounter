@@ -8,11 +8,10 @@ public class FileWriter {
 	
 	public void getOutput(HashMap<String,Integer> countOfMessage, String filename) {
 
-		String fileName = "result.txt";
 		PrintWriter output = null;
 
 		try {
-			output = new PrintWriter(fileName);
+			output = new PrintWriter(filename);
 		
 			for(Entry<String, Integer> entry : countOfMessage.entrySet()) {
 				output.print(entry.getKey());
@@ -21,7 +20,7 @@ public class FileWriter {
 				System.out.println(entry.getValue());
 			}
 		} catch(FileNotFoundException e) {
-			System.out.println("Error opening the file " + fileName);
+			System.out.println("Error opening the file " + filename);
 			System.exit(0);
 		}
 
